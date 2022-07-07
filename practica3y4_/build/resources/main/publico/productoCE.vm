@@ -1,0 +1,39 @@
+#parse("publico/navbar.vm")
+<div class="container">
+    <h1 class="display-4" style="font-weight: bold">Crear Producto</h1>
+    <form method="post" action="$accion" enctype="multipart/form-data">
+        <div class="form-group">
+          #if($producto == $null)
+              <label for="nombre">Nombre: </label><br>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+              <label for="precio">Precio: </label><br>
+              <input type="number" class="form-control" id="precio" name="precio" min="1" required>
+
+              <label for="desc">Descripción</label><br>
+              <textarea style="width: 500px"  id="desc" name="desc" required></textarea><br>
+
+                <label for="img">Elige una imágen:</label><br>
+                 <input type="file" class="form-control mb-2" id="img" name="img" multiple accept="image/*"required>
+          #else
+              <h5 class="display-4" style="font-weight: normal">Editar Producto</h5>
+              <label for="nombre" style="font-weight: bold">Nombre: </label><br>
+              <input type="text" class="form-control" id="nombre" name="nombre" value="$producto.getNombre()" required>
+              <label for="precio" style="font-weight: bold">Precio: </label><br>
+              <input type="number" class="form-control" id="precio" name="precio" min="1" value="$producto.precio" required>
+              <label for="desc" style="font-weight: bold">Descripción:</label><br>
+              <textarea style="width: 500px" id="desc" name="desc" required>$producto.desc</textarea>
+           #end
+                <br><br>
+              <input class="btn btn-dark" type="submit" value="Aceptar">
+              <button type="button" class="btn btn-light" onclick="location.href='/productos'">Atrás</button>
+          </form>
+        </div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

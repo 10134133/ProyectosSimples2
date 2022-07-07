@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <!-- ESTO NO ESTABA-->
+    <!-- Links de Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css" integrity="sha384-eoTu3+HydHRBIjnCVwsFyCpUDZHZSFKEJD0mc3ZqSBSb6YhZzRHeiomAUWCstIWo" crossorigin="anonymous">
+
+</head>
+<body>
+<!-- Nav bar que utilizaremos en todas los .html -->
+<nav th:fragment="navBar" class="navbar navbar-light bg-light navbar-expand-sm">
+    <img src="logop2practicaweb.jpg">
+    <a class="navbar-brand" href="/comprar">Fun Market</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <a class="nav-item nav-link bi bi-shop text-dark px-4" href="/comprar/">Catálogo</a>
+            <a class="nav-item nav-link text-dark px-4 bi bi-cash-coin" href="/ventas">Ventas Realizadas</a>
+            <a class="nav-item nav-link text-dark px-4 bi bi-columns-gap" href="/productos/">Administrar Productos</a>
+            <a class="nav-item nav-link bi bi-cart text-dark" href="/carrito">Carrito ($cantidad)
+                <p th:text="${$cantidad}" style="font-weight:bolder;color: darkblue"></p>
+            </a>
+            <a class="nav-item nav-link text-dark px-4" href="/logout" style="font-weight: bold">Login</a>
+        </ul>
+    </div>
+</nav>

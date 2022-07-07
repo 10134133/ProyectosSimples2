@@ -1,0 +1,54 @@
+#parse("publico/header.vm")
+
+<div class="container-fluid mb-4">
+    <div class="card text-center">
+      <div class="card-body">
+        <h3 class="text-center">Carrito de compra</h3>
+      </div>
+    </div>
+  <form action="/procesar" method="post">
+
+  <div class="mx-auto" style="width: 80%">
+    <div class="card ">
+      <div class="card-header">
+        <h4>Datos del Cliente</h4>
+      </div>
+      <div class="card-body">
+        <tag>Nombre del Cliente: </tag>
+        <input id="nombre" name="nombre" required >
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mb-3">
+    <div>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio($RD)</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Acción</th>
+        </tr>
+        </thead>
+        <tbody>
+        #foreach($producto in $productos)
+          <tr>
+            <td>$producto.nombre</td>
+            <td>$producto.precio</td>
+            <td>$producto.cantidad</td>
+            <td>$producto.total()</td>
+            <td><a href="/eliminar/$producto.getId()" class="btn btn-danger">Eliminar</a></td>
+          </tr>
+        #end
+        </tbody>
+      </table>
+    </div>
+    <div class="container-fluid align-center">
+      <button type="submit" class="btn btn-primary">Proceder</button>
+      <button type="button" class="btn btn-secondary" onclick="location.href='/limpiar'">Limpiar Carrito</button>
+    </div>
+  </div>
+  </form>
+</div>
+#include("publico/footer.vm")

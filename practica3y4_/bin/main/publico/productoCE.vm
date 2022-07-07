@@ -1,0 +1,59 @@
+#parse("publico/header.vm")
+
+<div class="container-fluid">
+    <div class="card text-center mb-3">
+      <div class="card-body">
+        <h3>Crear o Editar Producto</h3>
+      </div>
+    </div>
+    <div class="mx-auto" style="width: 80%">
+
+    <div class="container pl-6 pr-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>Crear producto</h3>
+        </div>
+        <div class="card-body">
+          <form method="post" action="$accion" enctype="multipart/form-data">
+          <div class="form-group">
+
+          #if($producto == $null)
+              <label for="nombre">Nombre: </label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="precio">Precio: </label>
+              <input type="number" class="form-control" id="precio" name="precio" min="1" required>
+            </div>
+            <div class="form-group">
+              <label for="desc">Descripción</label>
+              <textarea class="form-control" id="desc" name="desc" required></textarea>
+             </div>
+             <div class="form-group mb-2">
+                <label for="img">Imagenes</label>
+                 <input type="file" class="form-control mb-2" id="img" name="img" multiple accept="image/*"required>
+             </div>
+          #else
+              <label for="nombre">Nombre: </label>
+              <input type="text" class="form-control" id="nombre" name="nombre" value="$producto.getNombre()" required>
+            </div>
+            <div class="form-group">
+              <label for="precio">Precio: </label>
+              <input type="number" class="form-control" id="precio" name="precio" min="1" value="$producto.precio" required>
+              </div>
+               <div class="form-group">
+              <label for="desc">Descripción</label>
+              <textarea class="form-control" id="desc" name="desc" required>$producto.desc</textarea>
+           #end
+          </div>
+
+
+            <input class="btn btn-primary" type="submit" value="Aceptar">
+              <button type="button" class="btn btn-secondary" onclick="location.href='/productos'">Cancelar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+#include("publico/footer.vm")

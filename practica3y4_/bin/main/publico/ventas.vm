@@ -1,0 +1,47 @@
+#parse("publico/header.vm")
+
+<div class="container-fluid">
+    <div class="card text-center mb-3">
+      <div class="card-body">
+        <h3>Listado de Ventas Realizadas</h3>
+      </div>
+    </div >
+  <div class="mx-auto" style="width: 80%">
+
+    #foreach($venta in $ventas)
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5>$venta.nombreCliente - $venta.getFechaCompra()</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead class="thead">
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio($RD)</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+              #foreach($producto in $venta.getListaProductos())
+              <tr>
+                <td>$producto.nombre</td>
+                <td>$producto.getPrecio()</td>
+                <td>$producto.getCantidad()</td>
+                <td>$producto.total()</td>
+              </tr>
+              #end
+            <tr>
+              <td></td><td></td>
+              <td>Total:</td>
+              <td>$venta.getTotal()</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    #end
+  </div>
+</div>
+#include("publico/footer.vm")

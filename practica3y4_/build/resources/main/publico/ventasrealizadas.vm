@@ -1,0 +1,42 @@
+#parse("publico/navbar.vm")
+
+<div class="container">
+  <h1 class="display-4" style="font-weight: bold">Ventas Realizadas</h1>
+  <p class="lead" style="font-weight: normal">Aqui te mostramos las ventas realizadas</p>
+
+    #foreach($venta in $ventas)
+          <h5>$venta.nombreCliente - $venta.getFechaCompra()</h5>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio($RD)</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Total ($RD)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <br>
+              #foreach($producto in $venta.getListaProductos())
+              <tr>
+                <td>$producto.nombre</td>
+                <td>$producto.getPrecio()</td>
+                <td>$producto.getCantidad()</td>
+                <td>$producto.total()</td>
+              </tr>
+              #end
+            <tr>
+              <td></td><td></td>
+              <td>Total ($RD):</td>
+              <td>$venta.getTotal()</td>
+            </tr>
+            </tbody>
+          </table>
+    #end
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

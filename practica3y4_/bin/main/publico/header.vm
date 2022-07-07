@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebMarket - Carrito de compra</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-light bg-light navbar-expand-sm">
+    <a href="#" class="navbar-brand">Web-Market</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarmenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse my-2 my-lg-0" id="navbarmenu">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="/comprar" class="nav-link">Comprar</a> </li>
+            <li class="nav-item"><a href="/ventas" class="nav-link">Ventas</a> </li>
+            <li class="nav-item"><a href="/productos" class="nav-link">Administrar Productos</a> </li>
+            #if($cantidad == $null)
+                <li class="nav-item"><a href="/carrito" class="nav-link">Carrito (0)</a> </li>
+            #else
+                <li class="nav-item"><a href="/carrito" class="nav-link">Carrito ($cantidad)</a> </li>
+            #end
+            <li class="nav-item"><a href="/logout" class="nav-link">Log-out</a> </li>
+
+        </ul>
+    </div>
+</nav>

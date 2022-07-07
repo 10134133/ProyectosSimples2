@@ -1,0 +1,53 @@
+#parse("publico/header.vm")
+
+<div class="container-fluid">
+  <div class="card text-center">
+    <div class="card-body">
+      <h2>Listado de Productos</h2>
+    </div>
+  </div>
+  <div class="mx-auto" style="width: 80%">
+
+  <div>
+  <table class="table table-bordered">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">Producto</th>
+      <th scope="col">Precio($RD)</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Acción</th>
+    </tr>
+    </thead>
+    <tbody>
+      #foreach($producto in $productos)
+        <tr>
+
+          <form action="/comprar" method="post">
+            <td>$producto.nombre</td>
+            <td>$producto.precio</td>
+            <td>$producto.desc</td>
+            <input type="hidden" value="$producto.id" name="id">
+            <td><input type="number" min="0" value="0" name="cantidad"></td>
+            <td><input type="submit" class="btn btn-primary" value="Agregar">
+              <a href="/ver/$producto.getId()" class="btn btn-success">Ver</a></td>
+          </form>
+
+        </tr>
+      #end
+    </tbody>
+  </table>
+  <div class="m-auto">
+    <nav aria-label="...">
+      <ul class="pagination pagination-sm">
+        #foreach($pag in $paginas)
+        <li class="page-item">${pag}</li>
+        #end
+      </ul>
+    </nav>
+  </div>
+  </div>
+
+</div>
+</div>
+#include("publico/footer.vm")

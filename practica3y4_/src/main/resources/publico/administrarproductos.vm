@@ -1,0 +1,42 @@
+#parse("publico/navbar.vm")
+
+<div class="container">
+        <h1 class="display-4" style="font-weight: bold">Administrar Productos</h1>
+        <p class="lead" style="font-weight: normal">Aqui puedes manejar tus productos</p>
+        <button type="button" class="btn btn-dark bi bi-plus-circle" onclick="location.href='/registrar'">Agregar Nuevo Producto</button>
+        <br><br><br>
+        <table class="table table-striped">
+          <thead class="thead">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Precio($RD)</th>
+              <th scope="col">Descripción</th>
+          </tr>
+          </thead>
+          <tbody>
+            #foreach($producto in $productos)
+            <tr>
+              <td>$producto.getId()</td>
+              <td>$producto.getNombre()</td>
+              <td>$producto.getPrecio()</td>
+              <td>$producto.getDesc()</td>
+              <td>
+                <a href="/editar/$producto.getId()" class="btn btn-light btn-sm">Editar</a>  |
+                <a href="/remover/$producto.getId()" class="btn btn-danger btn-sm bi bi-trash">Eliminar</a></td>
+            </tr>
+            #end
+          </tbody>
+        </table>
+  <ul class="pagination pagination-sm">
+    #foreach($pag in $paginas)
+      <li class="page-item">${pag}</li>
+    #end
+  </ul>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

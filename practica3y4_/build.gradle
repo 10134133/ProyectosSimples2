@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'pucmm.edu.eitc'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+mainClassName='edu.pucmm.eitc.Main'
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    implementation 'io.javalin:javalin:3.13.7'
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+
+    compile "org.apache.velocity:velocity-engine-core:2.2"
+    compile 'com.h2database:h2:1.4.200'
+    implementation 'org.jasypt:jasypt:1.9.3'
+
+    compile 'org.hibernate:hibernate-core:5.4.17.Final'
+    compile 'org.hibernate:hibernate-entitymanager:5.4.17.Final'
+
+    
+}
+
+test {
+    useJUnitPlatform()
+}
